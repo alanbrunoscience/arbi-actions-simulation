@@ -15,7 +15,7 @@ on: # event: push
 jobs:
   run-windows-commands:
     runs-on: windows-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Directory Powershell
         run: Get-Location # In bash would be run "pwd"

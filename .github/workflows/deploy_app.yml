@@ -2,7 +2,7 @@ name: Deploy .NET Application
 
 on: # event: PR
   workflow_run:
-    workflows: ["Build .NET Application"]
+    workflows: [".NET Build Application"]
     types:
       - completed
 

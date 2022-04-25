@@ -1,0 +1,24 @@
+name: Deploy .NET Application
+
+# on: # event: PR
+#   workflow_run:
+#     workflows: ["Build Simulation (Shell Commands)"]
+#     types:
+#       - completed
+
+on: # event: push
+  workflow_run:
+    workflows: ["Build .NET Application"]
+    types: [requested]
+    branches: [develop]
+
+jobs:
+  run-windows-commands:
+    runs-on: windows-latest
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Directory Powershell
+        run: Get-Location # In bash would be run "pwd"
+      - name: Directory Bash
+        run: pwd
+        shell: bash

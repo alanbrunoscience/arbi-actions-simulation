@@ -1,4 +1,4 @@
-name: Deploy .NET Application
+name: b
 
 # on: # event: PR
 #   workflow_run:
@@ -8,7 +8,7 @@ name: Deploy .NET Application
 
 on: # event: push
   workflow_run:
-    workflows: ["Build .NET Application"]
+    workflows: ["a"]
     types: [requested]
     branches: [develop]
 

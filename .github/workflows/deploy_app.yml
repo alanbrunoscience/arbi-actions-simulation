@@ -1,16 +1,16 @@
 name: Deploy .NET Application
 
-on: # event: PR
-  workflow_run:
-    workflows: ["Build .NET Application"]
-    types:
-      - completed
-
-# on: # event: push
+# on: # event: PR
 #   workflow_run:
 #     workflows: ["Build .NET Application"]
-#     types: [requested]
-#     branches: [develop]
+#     types:
+#       - completed
+
+on: # event: push
+  workflow_run:
+    workflows: ["Build .NET Application"]
+    types: [requested]
+    branches: [develop]
 
 jobs:
   run-windows-commands:

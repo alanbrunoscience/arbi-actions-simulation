@@ -2,9 +2,9 @@ name: Build .NET Application
 
 # Triggers:
 on:
-  # push:
-  pull_request:
-    types: [closed]
+  push:
+  # pull_request:
+  #   types: [closed]
 
 jobs:
   # This workflow will run only if the PR is merged into master

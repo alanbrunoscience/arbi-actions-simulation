@@ -2,14 +2,14 @@ name: .NET Build Application
 
 # Triggers:
 on:
-  # push:
-  pull_request:
-    types: [closed]
+  push:
+  # pull_request:
+  #   types: [closed]
 
 jobs:
   # This workflow will run only if the PR is merged into master
     run-shell-commands:
-      if: github.event.pull_request.merged == true
+      # if: github.event.pull_request.merged == true
       runs-on: ubuntu-latest
       steps:
       - name: echo a string

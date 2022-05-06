@@ -20,19 +20,26 @@ jobs:
         run: |
           node -v
           npm -v
-      - name: Split string
+      - name: Split string (Python)
         run: |
           nameRepo = "${{ github.repository }}"
-          nameSplitRepo = nameRepo.split("/")
-          GITHUB_REPO_ACTOR = nameSplitRepo[0]
-          GITHUB_REPO_NAME=nameSplitRepo[1]
-          print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
-          print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
-          echo "GITHUB_REPO_ACTOR" >> $GITHUB_ENV
-          echo "GITHUB_REPO_NAME" >> $GITHUB_ENV
-        shell: |
-          python
-          bash
+          IFS='/'
+          read -ra arr << "$string"
+          for val in "${arr[@]}";
+          do
+            printf "name = $val\n"
+          done
+      # - name: Split string (Python)
+      #   run: |
+      #     nameRepo = "${{ github.repository }}"
+      #     nameSplitRepo = nameRepo.split("/")
+      #     GITHUB_REPO_ACTOR = nameSplitRepo[0]
+      #     GITHUB_REPO_NAME=nameSplitRepo[1]
+      #     print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
+      #     print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
+      #   shell: python
+      #     echo "GITHUB_REPO_ACTOR" >> $GITHUB_ENV
+      #     echo "GITHUB_REPO_NAME" >> $GITHUB_ENV
       - name: Default ENV Variables
         run: |
           echo "HOME: ${HOME}"

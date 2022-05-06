@@ -33,10 +33,10 @@ jobs:
           print(env_file)
 
           with open(env_file, "a") as myfile:
-            myfile.write("GITHUB_REPO_ACTOR=${GITHUB_REPO_ACTOR}")
+            myfile.write("GITHUB_REPO_ACTOR={GITHUB_REPO_ACTOR}")
         shell: python
       - name: Confering Variable
-        run: echo ${{ env.GITHUB_REPO_ACTOR }}
+        run: echo "${{ env.GITHUB_REPO_ACTOR }}"
       # - name: Split string (Python)
       #   run: |
       #     import os

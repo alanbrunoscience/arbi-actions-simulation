@@ -31,7 +31,7 @@ jobs:
           print(env_file)
 
           with open(env_file, "a") as myfile:
-            myfile.write(GITHUB_REPO_ACTOR=nameSplitRepo[0].lower())
+            myfile.write("GITHUB_REPO_ACTOR=" + nameSplitRepo[0].lower())
         shell: python
       - name: Confering Variable
         run: echo "${{ env.GITHUB_REPO_ACTOR }}"

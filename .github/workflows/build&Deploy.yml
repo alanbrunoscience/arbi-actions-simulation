@@ -25,15 +25,14 @@ jobs:
           import os
           nameRepo = "${{ github.repository }}"
           nameSplitRepo = nameRepo.split("/")
-          env_file = os.getenv('GITHUB_ENV')
-          GITHUB_REPO_ACTOR = nameSplitRepo[0].lower()
+          env_file = os.getenv('GITHUB_ENV') 
           GITHUB_REPO_NAME=nameSplitRepo[1].lower()
           print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
           print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
           print(env_file)
 
           with open(env_file, "a") as myfile:
-            myfile.write("GITHUB_REPO_ACTOR={GITHUB_REPO_ACTOR}")
+            myfile.write("GITHUB_REPO_ACTOR=nameSplitRepo[0].lower()")
         shell: python
       - name: Confering Variable
         run: echo "${{ env.GITHUB_REPO_ACTOR }}"

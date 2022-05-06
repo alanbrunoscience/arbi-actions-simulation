@@ -23,17 +23,13 @@ jobs:
       - name: Split string
         run: |
           nameRepo = ${{ github.repository }}
-          IFS='/'
-          read -ra arr <<< "$nameRepo"
-          for val in "${arr[@]}";
-          do
-            printf "name = $val\n"
-          done
+          print(nameRepo)
         # nameSplitRepo = nameRepo.split("/")
         # GITHUB_REPO_ACTOR = nameSplitRepo[0]
         # GITHUB_REPO_NAME=nameSplitRepo[1]
         # print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
         # print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
+        shell: python
       - name: Default ENV Variables
         run: |
           echo "HOME: ${HOME}"

@@ -22,7 +22,7 @@ jobs:
           npm -v
       - name: Split string
         run: |
-          nameRepo = ${{ GITHUB_REPOSITORY }}
+          nameRepo = ${{ github.repository }}
           IFS='/'
           read -ra arr <<< "$nameRepo"
           for val in "${arr[@]}";

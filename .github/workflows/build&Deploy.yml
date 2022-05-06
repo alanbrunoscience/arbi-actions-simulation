@@ -25,10 +25,8 @@ jobs:
           import os
           nameRepo = "${{ github.repository }}"
           nameSplitRepo = nameRepo.split("/")         
-          os.environ["GITHUB_REPO_ACTOR"] = nameSplitRepo[0].lower()
-          os.environ["GITHUB_REPO_NAME"]=nameSplitRepo[1].lower()
-          echo ${{ env.GITHUB_REPO_ACTOR }}
-          echo ${{ env.GITHUB_REPO_NAME }}
+          os.environ.setdefault("GITHUB_REPO_ACTOR", nameSplitRepo[0].lower())
+          os.environ.setdefault("GITHUB_REPO_NAME", nameSplitRepo[1].lower())
         shell: python
       - name: Default ENV Variables
         run: |

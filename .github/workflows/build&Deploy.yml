@@ -8,7 +8,6 @@ on:
 
 env:
   RUNDATE: $(date +"%Y%m%d_")
-  REPO_NAME: ${GITHUB_REPOSITORY}
 
 jobs:
   Build_application:
@@ -21,17 +20,20 @@ jobs:
         run: |
           node -v
           npm -v
-      - name: python commands
+      - name: Split string
         run: |
-          nameRepo = ${{ env.REPO_NAME }}
-          print(nameRepo)
-          
+          nameRepo = ${{ GITHUB_REPOSITORY }}
+          IFS='/'
+          read -ra arr <<< "$nameRepo"
+          for val in "${arr[@]}";
+          do
+            printf "name = $val\n"
+          done
         # nameSplitRepo = nameRepo.split("/")
         # GITHUB_REPO_ACTOR = nameSplitRepo[0]
         # GITHUB_REPO_NAME=nameSplitRepo[1]
         # print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
         # print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
-        shell: python
       - name: Default ENV Variables
         run: |
           echo "HOME: ${HOME}"

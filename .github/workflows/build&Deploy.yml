@@ -22,7 +22,7 @@ jobs:
           npm -v
       - name: python commands
         run: |
-          nameRepo = ${GITHUB_REPOSITORY}
+          nameRepo = GITHUB_REPOSITORY
           print(nameRepo)
         # nameSplitRepo = nameRepo.split("/")
         # GITHUB_REPO_ACTOR = nameSplitRepo[0]

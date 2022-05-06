@@ -25,19 +25,6 @@ jobs:
           import platform
           print(platform.processor())
         shell: python
-
-#==============================================================================================================
-
-  Deploy-Application:
-    runs-on: windows-latest
-    needs: ["Build_application"]
-    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    steps:
-      - name: Directory Powershell
-        run: Get-Location # In bash would be run "pwd"
-      - name: Directory Bash
-        run: pwd
-        shell: bash
       - name: Default ENV Variables
         run: |
           echo "HOME: ${HOME}"
@@ -53,3 +40,16 @@ jobs:
           echo "WF_ENV: ${WF_ENV}"
           echo "JOB_ENV: ${JOB_ENV}"
           echo "STEP_ENV: ${STEP_ENV}"
+
+#==============================================================================================================
+
+  Deploy-Application:
+    runs-on: windows-latest
+    needs: ["Build_application"]
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Directory Powershell
+        run: Get-Location # In bash would be run "pwd"
+      - name: Directory Bash
+        run: pwd
+        shell: bash

@@ -6,8 +6,9 @@ on:
   #   branches: [ master ]
   #   types: [closed]
 
-# env:
-#   RUNDATE: $(date +"%Y%m%d_")
+env:
+  RUNDATE: $(date +"%Y%m%d_")
+  REPO_NAME: ${GITHUB_REPOSITORY}
 
 jobs:
   Build_application:
@@ -22,7 +23,7 @@ jobs:
           npm -v
       - name: python commands
         run: |
-          nameRepo = GITHUB_REPOSITORY
+          nameRepo = REPO_NAME
           print(nameRepo)
         # nameSplitRepo = nameRepo.split("/")
         # GITHUB_REPO_ACTOR = nameSplitRepo[0]

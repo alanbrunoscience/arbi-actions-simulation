@@ -30,18 +30,6 @@ jobs:
             myfile.write("GITHUB_REPO_ACTOR=" + nameSplitRepo[0].lower() + "\n")
             myfile.write("GITHUB_REPO_NAME=" + nameSplitRepo[1].lower())
         shell: python
-      - name: Confering Variable
-        run: echo "${{ env.GITHUB_REPO_ACTOR }}"
-      # - name: Split string (Python)
-      #   run: |
-      #     import os
-      #     nameRepo = "${{ github.repository }}"
-      #     nameSplitRepo = nameRepo.split("/")
-      #     GITHUB_REPO_ACTOR = nameSplitRepo[0].lower()
-      #     GITHUB_REPO_NAME=nameSplitRepo[1].lower()
-      #     print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
-      #     print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
-      #   shell: python
       - name: Default ENV Variables
         run: |
           echo "GITHUB_REPO_ACTOR: ${GITHUB_REPO_ACTOR}"

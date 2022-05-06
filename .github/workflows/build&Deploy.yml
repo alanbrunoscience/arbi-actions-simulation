@@ -23,11 +23,12 @@ jobs:
       - name: python commands
         run: |
           nameRepo = "${GITHUB_REPOSITORY}"
-          nameSplitRepo = nameRepo.split("/")
-          GITHUB_REPO_ACTOR = nameSplitRepo[0]
-          GITHUB_REPO_NAME=nameSplitRepo[1]
-          print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
-          print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
+          print(nameRepo)
+        # nameSplitRepo = nameRepo.split("/")
+        # GITHUB_REPO_ACTOR = nameSplitRepo[0]
+        # GITHUB_REPO_NAME=nameSplitRepo[1]
+        # print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
+        # print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
         shell: python
       - name: Default ENV Variables
         run: |

@@ -20,27 +20,18 @@ jobs:
         run: |
           node -v
           npm -v
-  set_variables:
-    runs-on: ubuntu-latest
-    steps:
       - name: Split string (Python)
         run: |
           import os
           nameRepo = "${{ github.repository }}"
-          nameSplitRepo = nameRepo.split("/")
-          GITHUB_REPO_ACTOR = nameSplitRepo[0].lower()
-          GITHUB_REPO_NAME=nameSplitRepo[1].lower()
-          print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
-          print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
-        env:
-          GITHUB_REPO_ACTOR: GITHUB_REPO_ACTOR
-          GITHUB_REPO_NAME: GITHUB_REPO_NAME
+          nameSplitRepo = nameRepo.split("/")         
+          env_file = os.getenv('GITHUB_ENV')
+          with open(env_file, "a") as myfile:
+            myfile.write("GITHUB_REPO_ACTOR=nameSplitRepo[0].lower()")
+            myfile.write("GITHUB_REPO_NAME=nameSplitRepo[0].lower()")
+          print("GITHUB_REPO_ACTOR: ", ${{ env.GITHUB_REPO_ACTOR }}
+          print("GITHUB_REPO_NAME: ", ${{ env.GITHUB_REPO_NAME }}
         shell: python
-          
-      - name: Set env
-        run: |
-          echo "GITHUB_REPO_ACTOR=$(GITHUB_REPO_ACTOR)" >> $GITHUB_ENV
-          echo "GITHUB_REPO_NAME=$(GITHUB_REPO_NAME)" >> $GITHUB_ENV
       - name: Default ENV Variables
         run: |
           echo "GITHUB_REPO_ACTOR: ${GITHUB_REPO_ACTOR}"

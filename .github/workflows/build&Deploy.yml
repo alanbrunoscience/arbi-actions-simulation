@@ -23,7 +23,7 @@ jobs:
       - name: Split string (Python)
         run: |
           nameRepo = "${{ github.repository }}"
-          nameSplitRepo = nameRepo.split("/")
+          nameSplitRepo = nameRepo.lower().split("/")
           GITHUB_REPO_ACTOR = nameSplitRepo[0]
           GITHUB_REPO_NAME=nameSplitRepo[1]
           print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)

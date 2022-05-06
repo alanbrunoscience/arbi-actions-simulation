@@ -22,10 +22,10 @@ jobs:
           npm -v
       - name: Split string (Python)
         run: |
-          nameRepo = "${{ github.repository }}".lower()
+          nameRepo = "${{ github.repository }}"
           nameSplitRepo = nameRepo.split("/")
-          GITHUB_REPO_ACTOR = nameSplitRepo[0]
-          GITHUB_REPO_NAME=nameSplitRepo[1]
+          GITHUB_REPO_ACTOR = nameSplitRepo[0].lower()
+          GITHUB_REPO_NAME=nameSplitRepo[1].lower()
           print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
           print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
         shell: python

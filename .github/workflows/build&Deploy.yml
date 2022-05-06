@@ -27,7 +27,6 @@ jobs:
           nameSplitRepo = nameRepo.split("/")
           env_file = os.getenv('GITHUB_ENV') 
           GITHUB_REPO_NAME=nameSplitRepo[1].lower()
-          print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
           print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
           print(env_file)
 

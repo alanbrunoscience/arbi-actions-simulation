@@ -20,6 +20,9 @@ jobs:
         run: |
           node -v
           npm -v
+  set_variables:
+    runs-on: ubuntu-latest
+    steps:
       - name: Split string (Python)
         run: |
           import os
@@ -28,14 +31,13 @@ jobs:
           GITHUB_REPO_ACTOR = nameSplitRepo[0].lower()
           GITHUB_REPO_NAME=nameSplitRepo[1].lower()
           print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
-          os.system('export GITHUB_REPO_ACTOR="GITHUB_REPO_ACTOR"')
           print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
-        env:
-          GITHUB_REPO_ACTOR: $(GITHUB_REPO_ACTOR)
-          GITHUB_REPO_NAME: $(GITHUB_REPO_NAME)
         shell: python
-          # echo "GITHUB_REPO_ACTOR" >> $GITHUB_ENV
-          # echo "GITHUB_REPO_NAME" >> $GITHUB_ENV
+          
+      - name: Set env
+        run: |
+          echo "GITHUB_REPO_ACTOR" >> $GITHUB_ENV
+          echo "GITHUB_REPO_NAME" >> $GITHUB_ENV
       - name: Default ENV Variables
         run: |
           echo "HOME: ${HOME}"
@@ -51,7 +53,9 @@ jobs:
           echo "WF_ENV: ${WF_ENV}"
           echo "JOB_ENV: ${JOB_ENV}"
           echo "STEP_ENV: ${STEP_ENV}"
-
+    outputs:
+      GITHUB_REPO_ACTOR: ${{ env.GITHUB_REPO_ACTOR }}
+      GITHUB_REPO_NAME: ${{ env.GITHUB_REPO_NAME }}
 #==============================================================================================================
 
   Deploy-Application:

@@ -25,11 +25,23 @@ jobs:
           import os
           nameRepo = "${{ github.repository }}"
           nameSplitRepo = nameRepo.split("/")
+          GITHUB_ENV = "${{ GITHUB_ENV }}"
           GITHUB_REPO_ACTOR = nameSplitRepo[0].lower()
           GITHUB_REPO_NAME=nameSplitRepo[1].lower()
           print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
           print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
+          print(GITHUB_ENV)
         shell: python
+      # - name: Split string (Python)
+      #   run: |
+      #     import os
+      #     nameRepo = "${{ github.repository }}"
+      #     nameSplitRepo = nameRepo.split("/")
+      #     GITHUB_REPO_ACTOR = nameSplitRepo[0].lower()
+      #     GITHUB_REPO_NAME=nameSplitRepo[1].lower()
+      #     print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
+      #     print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
+      #   shell: python
       - name: Default ENV Variables
         run: |
           echo "GITHUB_REPO_ACTOR: ${GITHUB_REPO_ACTOR}"

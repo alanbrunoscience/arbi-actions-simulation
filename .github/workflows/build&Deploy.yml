@@ -30,9 +30,9 @@ jobs:
           print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
           os.system('export GITHUB_REPO_ACTOR="GITHUB_REPO_ACTOR"')
           print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
-        # env:
-        #   GITHUB_REPO_ACTOR: GITHUB_REPO_ACTOR
-        #   GITHUB_REPO_NAME: GITHUB_REPO_NAME
+        env:
+          GITHUB_REPO_ACTOR: "GITHUB_REPO_ACTOR"
+          GITHUB_REPO_NAME: "GITHUB_REPO_NAME"
         shell: python
           # echo "GITHUB_REPO_ACTOR" >> $GITHUB_ENV
           # echo "GITHUB_REPO_NAME" >> $GITHUB_ENV

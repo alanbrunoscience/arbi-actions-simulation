@@ -24,7 +24,7 @@ jobs:
         run: |
           nameRepo = "${{ github.repository }}"
           IFS='/'
-          read -ra arr << "$string"
+          read -ra arr << "$nameRepo"
           for val in "${arr[@]}";
           do
             printf "name = $val\n"

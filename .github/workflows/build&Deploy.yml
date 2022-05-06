@@ -29,8 +29,9 @@ jobs:
           with open(env_file, "a") as myfile:
             myfile.write("GITHUB_REPO_ACTOR=nameSplitRepo[0].lower()")
             myfile.write("GITHUB_REPO_NAME=nameSplitRepo[0].lower()")
-          print("GITHUB_REPO_ACTOR: ", ${{ env.GITHUB_REPO_ACTOR }}
-          print("GITHUB_REPO_NAME: ", ${{ env.GITHUB_REPO_NAME }}
+          python write-env.py
+          echo ${{ env.GITHUB_REPO_ACTOR }}
+          echo ${{ env.GITHUB_REPO_NAME }}
         shell: python
       - name: Default ENV Variables
         run: |

@@ -32,6 +32,9 @@ jobs:
           GITHUB_REPO_NAME=nameSplitRepo[1].lower()
           print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
           print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
+        env:
+          GITHUB_REPO_ACTOR: GITHUB_REPO_ACTOR
+          GITHUB_REPO_NAME: GITHUB_REPO_NAME
         shell: python
           
       - name: Set env

@@ -24,8 +24,8 @@ jobs:
         run: |
           nameRepo = "${{ github.repository }}"
           nameSplitRepo = nameRepo.split("/")
-          GITHUB_REPO_ACTOR = nameSplitRepo[0] >> $GITHUB_ENV
-          GITHUB_REPO_NAME=nameSplitRepo[1] >> $GITHUB_ENV
+          GITHUB_REPO_ACTOR = nameSplitRepo[0]
+          GITHUB_REPO_NAME=nameSplitRepo[1]
           print("GITHUB_REPO_ACTOR: ", GITHUB_REPO_ACTOR)
           print("GITHUB_REPO_NAME: ", GITHUB_REPO_NAME)
         shell: python

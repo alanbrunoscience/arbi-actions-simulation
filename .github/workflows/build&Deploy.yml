@@ -22,8 +22,12 @@ jobs:
           npm -v
       - name: python commands
         run: |
-          import platform
-          print(platform.processor())
+          nameRepo = "${GITHUB_REPOSITORY}"
+          nameSplitRepo = nameRepo.split("/")
+          echo "GITHUB_REPO_ACTOR=nameSplitRepo[0]" >> $GITHUB_ENV
+          echo "GITHUB_REPO_NAME=nameSplitRepo[1]" >> $GITHUB_ENV
+          echo "GITHUB_REPO_ACTOR: ${GITHUB_REPO_ACTOR}"
+          echo "GITHUB_REPO_NAME: ${GITHUB_REPO_NAME}"
         shell: python
       - name: Default ENV Variables
         run: |

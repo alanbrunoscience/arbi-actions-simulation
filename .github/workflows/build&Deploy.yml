@@ -6,8 +6,8 @@ on:
   #   branches: [ master ]
   #   types: [closed]
 
-env:
-  RUNDATE: $(date +"%Y%m%d_")
+# env:
+#   RUNDATE: $(date +"%Y%m%d_")
 
 jobs:
   Build_application:

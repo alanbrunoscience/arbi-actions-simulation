@@ -36,10 +36,12 @@ jobs:
           
       - name: Set env
         run: |
-          echo "GITHUB_REPO_ACTOR" >> $GITHUB_ENV
-          echo "GITHUB_REPO_NAME" >> $GITHUB_ENV
+          echo "GITHUB_REPO_ACTOR=$(GITHUB_REPO_ACTOR)" >> $GITHUB_ENV
+          echo "GITHUB_REPO_NAME=$(GITHUB_REPO_NAME)" >> $GITHUB_ENV
       - name: Default ENV Variables
         run: |
+          echo "GITHUB_REPO_ACTOR: ${GITHUB_REPO_ACTOR}"
+          echo "GITHUB_REPO_NAME: ${GITHUB_REPO_NAME}"          
           echo "HOME: ${HOME}"
           echo "GITHUB_WORKFLOW: ${GITHUB_WORKFLOW}"
           echo "GITHUB_ACTION: ${GITHUB_ACTION}"
@@ -53,9 +55,9 @@ jobs:
           echo "WF_ENV: ${WF_ENV}"
           echo "JOB_ENV: ${JOB_ENV}"
           echo "STEP_ENV: ${STEP_ENV}"
-    outputs:
-      GITHUB_REPO_ACTOR: ${{ env.GITHUB_REPO_ACTOR }}
-      GITHUB_REPO_NAME: ${{ env.GITHUB_REPO_NAME }}
+    # outputs:
+    #   GITHUB_REPO_ACTOR: ${{ env.GITHUB_REPO_ACTOR }}
+    #   GITHUB_REPO_NAME: ${{ env.GITHUB_REPO_NAME }}
 #==============================================================================================================
 
   Deploy-Application:

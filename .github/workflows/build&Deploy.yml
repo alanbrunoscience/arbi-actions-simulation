@@ -25,6 +25,7 @@ jobs:
         run: |
           nameRepo = ${{ env.REPO_NAME }}
           print(nameRepo)
+          
         # nameSplitRepo = nameRepo.split("/")
         # GITHUB_REPO_ACTOR = nameSplitRepo[0]
         # GITHUB_REPO_NAME=nameSplitRepo[1]

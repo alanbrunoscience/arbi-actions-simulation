@@ -25,11 +25,8 @@ jobs:
           import os
           nameRepo = "${{ github.repository }}"
           nameSplitRepo = nameRepo.split("/")         
-          env_file = os.getenv('GITHUB_ENV')
-          with open(env_file, "a") as myfile:
-            myfile.write("GITHUB_REPO_ACTOR=nameSplitRepo[0].lower()")
-            myfile.write("GITHUB_REPO_NAME=nameSplitRepo[0].lower()")
-          python write-env.py
+          os.environ["GITHUB_REPO_ACTOR"] = nameSplitRepo[0].lower()
+          os.environ["GITHUB_REPO_NAME"]=nameSplitRepo[1].lower()
           echo ${{ env.GITHUB_REPO_ACTOR }}
           echo ${{ env.GITHUB_REPO_NAME }}
         shell: python

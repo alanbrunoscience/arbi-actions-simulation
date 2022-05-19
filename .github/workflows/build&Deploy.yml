@@ -56,8 +56,8 @@ jobs:
   Deploy-Application:
     runs-on: windows-latest
     needs: ["Build_application"]
-    if: github.event.Build_application.conclusion == 'success'
-    # if: github.event.pull_request.merged == true
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: github.event.pull_request.merged == true
     
     steps:
       - name: Directory Powershell

@@ -55,9 +55,10 @@ jobs:
 
   Deploy-Application:
     runs-on: windows-latest
-    # needs: ["Build_application"]
-    if: github.event.pull_request.merged == true
+    needs: ["Build_application"]
     # if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: needs.event.pull_request.merged == true
+    
     steps:
       - name: Directory Powershell
         run: Get-Location # In bash would be run "pwd"

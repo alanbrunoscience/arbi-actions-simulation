@@ -55,7 +55,7 @@ jobs:
 
   Deploy-Application:
     runs-on: windows-latest
-    # needs: ["Build_application"]
+    needs: ["Build_application"]
     if: github.event.pull_request.merged == true
     # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:

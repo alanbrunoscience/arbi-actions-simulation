@@ -58,7 +58,7 @@ jobs:
     needs: ["Build_application"]
     # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     # if: github.event.pull_request.merged == true
-    if: github.ref == 'refs/heads/master' && needs.Build_application.result == 'success'
+    if: github.ref == 'refs/heads/master' && always()
     
     steps:
       - name: Directory Powershell

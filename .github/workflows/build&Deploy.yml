@@ -7,26 +7,22 @@ on:
 jobs:
   Build_application:
     runs-on: ubuntu-latest
+
+    env:
+      NAME_BRANCH: ${{ github.head_ref }}
+ 
     steps:
     
-      - name: echo a string
-        env:
-          NAME_BRANCH: ${{ github.head_ref }}
-        run: |
-          echo "NAME_BRANCH: ${NAME_BRANCH}"
+      - name: Print name branch
+        run: "echo NAME_BRANCH: ${NAME_BRANCH}"
 
-# echo "GITHUB_REPO_ACTOR: ${GITHUB_REPO_ACTOR}"
-          # echo "GITHUB_REPO_NAME: ${GITHUB_REPO_NAME}"          
-          # echo "HOME: ${HOME}"
-          # echo "GITHUB_WORKFLOW: ${GITHUB_WORKFLOW}"
-          # echo "GITHUB_ACTION: ${GITHUB_ACTION}"
-          # echo "GITHUB_ACTIONS: ${GITHUB_ACTIONS}"
-          # echo "GITHUB_ACTOR: ${GITHUB_ACTOR}"
-          # echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
-          # echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
-          # echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
-          # echo "GITHUB_SHA: ${GITHUB_SHA}"
-          # echo "GITHUB_REF: ${GITHUB_REF}"
-          # echo "WF_ENV: ${WF_ENV}"
-          # echo "JOB_ENV: ${JOB_ENV}"
-          # echo "STEP_ENV: ${STEP_ENV}" 
+      - name: Find specific branch patterns
+        run: |
+          import re
+          name_branch = github_head_ref.lower()
+          nameSplitRepo = nameRepo.split("/")
+          env_file = os.getenv('GITHUB_ENV')
+          with open(env_file, "a") as myfile:
+            myfile.write("GITHUB_REPO_OWNER=" + nameSplitRepo[0].lower() + "\n")
+            myfile.write("GITHUB_REPO_NAME=" + nameSplitRepo[1].lower())
+        shell: python

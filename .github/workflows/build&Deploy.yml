@@ -11,5 +11,5 @@ jobs:
       - name: echo a string
         run: |
           echo "github_head_ref: ${{ github.head_ref }}"
-          echo "NAME_BRANCH=github_head_ref" >> $GITHUB_ENV
+          echo "NAME_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
           echo ${{ env.NAME_BRANCH }}

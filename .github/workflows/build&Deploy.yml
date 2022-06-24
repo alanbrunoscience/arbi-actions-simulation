@@ -19,10 +19,12 @@ jobs:
       - name: Find specific branch patterns
         run: |
           import re
-          name_branch = github_head_ref.lower()
-          nameSplitRepo = nameRepo.split("/")
-          env_file = os.getenv('GITHUB_ENV')
-          with open(env_file, "a") as myfile:
-            myfile.write("GITHUB_REPO_OWNER=" + nameSplitRepo[0].lower() + "\n")
-            myfile.write("GITHUB_REPO_NAME=" + nameSplitRepo[1].lower())
+          name_branch = $NAME_BRANCH.lower()
+          x = re.findall("alpha|beta|prerelease", name_branch)
+          prerelease = (x[0])
+          print(prerelease)
+          if x:
+            print("Yes, there is at least one match!")
+          else:
+            print("No match")
         shell: python

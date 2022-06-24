@@ -3,66 +3,13 @@ name: Build and Deploy
 on:
   # push:  
   pull_request:
-    branches: [ master ]
-    types: [opened]
-
-# env:
-#   RUNDATE: $(date +"%Y%m%d_")
+    types: [opened, reopened]
 
 jobs:
   Build_application:
-    # if: github.event.pull_request.merged == true
-    # if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: echo a string
-        run: echo "Hello World"
-      - name: multiline script
         run: |
-          node -v
-          npm -v
-      - name: Split string (Python)
-        run: |
-          import os
-          nameRepo = "${{ github.repository }}"
-          nameSplitRepo = nameRepo.split("/")
-          env_file = os.getenv('GITHUB_ENV') 
-          with open(env_file, "a") as myfile:
-            myfile.write("GITHUB_REPO_ACTOR=" + nameSplitRepo[0].lower() + "\n")
-            myfile.write("GITHUB_REPO_NAME=" + nameSplitRepo[1].lower())
-        shell: python
-      - name: Default ENV Variables
-        run: |
-          echo "GITHUB_REPO_ACTOR: ${GITHUB_REPO_ACTOR}"
-          echo "GITHUB_REPO_NAME: ${GITHUB_REPO_NAME}"          
-          echo "HOME: ${HOME}"
-          echo "GITHUB_WORKFLOW: ${GITHUB_WORKFLOW}"
-          echo "GITHUB_ACTION: ${GITHUB_ACTION}"
-          echo "GITHUB_ACTIONS: ${GITHUB_ACTIONS}"
-          echo "GITHUB_ACTOR: ${GITHUB_ACTOR}"
-          echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
-          echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
-          echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
-          echo "GITHUB_SHA: ${GITHUB_SHA}"
-          echo "GITHUB_REF: ${GITHUB_REF}"
-          echo "WF_ENV: ${WF_ENV}"
-          echo "JOB_ENV: ${JOB_ENV}"
-          echo "STEP_ENV: ${STEP_ENV}"
-    # outputs:
-    #   GITHUB_REPO_ACTOR: ${{ env.GITHUB_REPO_ACTOR }}
-    #   GITHUB_REPO_NAME: ${{ env.GITHUB_REPO_NAME }}
-#==============================================================================================================
-
-  Deploy-Application:
-    runs-on: windows-latest
-    needs: ["Build_application"]
-    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    # if: github.event.pull_request.merged == true
-    if: github.ref == 'refs/heads/master' && '[skip-ci]'
-    
-    steps:
-      - name: Directory Powershell
-        run: Get-Location # In bash would be run "pwd"
-      - name: Directory Bash
-        run: pwd
-        shell: bash
+          echo "github.head_ref: ${{ github.head_ref }}"
+          echo "NAME_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV

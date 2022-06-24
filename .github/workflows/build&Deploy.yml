@@ -19,7 +19,7 @@ jobs:
       - name: Find specific branch patterns
         run: |
           import re
-          name_branch = $NAME_BRANCH.lower()
+          name_branch = ${{ env.NAME_BRANCH }}.lower()
           x = re.findall("alpha|beta|prerelease", name_branch)
           prerelease = (x[0])
           print(prerelease)

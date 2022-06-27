@@ -1,17 +1,15 @@
 name: Build and Deploy
 
 on:
-  pull_request:
-    # types: [opened, reopened]
-    types: [opened, reopened]
-  # push:
-  #   branches:    
-  #     - 'feat/alpha/workflow'
+  pull_request_target:
+    ## types: [opened, reopened]
+    types:
+      - opened
+    branches:    
+      - 'develop'
 
 jobs:
   Build_application:
-    # if: ${{ github.head_ref == "**/alpha/**" }}
-    if: contains(${{ github.head_ref }}, 'alpha')
     runs-on: ubuntu-latest
 
     env:

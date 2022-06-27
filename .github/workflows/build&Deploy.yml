@@ -4,9 +4,9 @@ on:
   pull_request_target:
     types:
       - opened
-      - reopened
-    branches:    
-      - 'develop'
+    #   - reopened
+    # branches:    
+    #   - 'develop'
 
 jobs:
   Build_application:

@@ -6,7 +6,7 @@ on:
     types:
       - opened
     branches:    
-      - 'feat/**'
+      - 'master'
 
 jobs:
   Build_application:

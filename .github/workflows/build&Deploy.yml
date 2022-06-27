@@ -1,14 +1,12 @@
 name: Build and Deploy
 
 on:
-  # pull_request:
-  #   types: [opened, reopened]
   pull_request:
     types: [opened, reopened]
 
 jobs:
   Build_application:
-    if: ${{ github.head_ref == '**/alpha/**' || '**/beta/**' || '**/prerelease/**' }}
+    if: contains(github.head_ref, 'alpha') || contains(github.head_ref, 'beta') || contains(github.head_ref, 'prerelease')
     runs-on: ubuntu-latest
     
     env:

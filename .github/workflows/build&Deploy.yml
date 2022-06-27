@@ -6,7 +6,7 @@ on:
     types:
       - opened
     branches:    
-      - 'develop'
+      - 'develop/test'
 
 jobs:
   Build_application:

@@ -1,11 +1,11 @@
 name: Build and Deploy
 
 on:
-  pull_request:
+  pull_request_target:
     types:
       - opened
       - reopened
-    branches:    
+    branches:
       - 'develop'
 
 jobs:

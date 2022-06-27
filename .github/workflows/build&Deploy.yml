@@ -8,7 +8,7 @@ on:
 
 jobs:
   Build_application:
-    if: ${{ github.head_ref == '**/alpha/**' || '**/beta/**' || '**/prerelease/**' }}
+    if: github.head_ref == '**/alpha/**' || '**/beta/**' || '**/prerelease/**'
     runs-on: ubuntu-latest
     
     env:

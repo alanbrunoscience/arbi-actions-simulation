@@ -30,8 +30,7 @@ jobs:
           env_file = os.getenv('GITHUB_ENV')
           with open(env_file, "a") as myfile:
             myfile.write("PRERELEASE=" + x[0])
-          prerelease = (x[0])
-          print(prerelease)
+          print(${{ env.PRERELEASE }})
           if x:
             print("Yes, there is at least one match!")
           else:

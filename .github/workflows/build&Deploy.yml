@@ -1,12 +1,11 @@
 name: Build and Deploy
 
-on:  
+on:
   pull_request:
-    ## types: [opened, reopened]
-    types: 
+    types:
       - opened
-    branches:
-      - 'feat/**'
+    branches:    
+      - 'releases/**'
 
 jobs:
   Build_application:

@@ -11,7 +11,7 @@ on:
 jobs:
   Build_application:
     # if: ${{ github.head_ref == "**/alpha/**" }}
-    if: contains('["alpha","beta","prerelease"]', github.head_ref)
+    if: contains(${{ github.head_ref }}, 'alpha')
     runs-on: ubuntu-latest
 
     env:

@@ -4,7 +4,7 @@ on:
   pull_request:
     # types: [opened, reopened]
     types: 
-      - reopened
+      - opened
     branches:
       - 'feat/**'
 

@@ -4,14 +4,13 @@ on:
   pull_request:
     # types: [opened, reopened]
     types: [opened, reopened]
-  # push:
-  #   branches:    
-  #     - 'feat/alpha/workflow'
+    # branches:    
+    #   - 'feat/alpha/workflow'
 
 jobs:
   Build_application:
-    ## if: ${{ github.head_ref == "**/alpha/**" }}
-    if: contains(${{ github.head_ref }}, ['alpha', 'beta', 'prerelease'])
+    if: ${{ github.head_ref == "*/alpha/*" }}
+    # if: contains(${{ github.head_ref }}, ['alpha', 'beta', 'prerelease'])
     runs-on: ubuntu-latest
 
     env:

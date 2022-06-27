@@ -2,13 +2,11 @@ name: Build and Deploy
 
 on:
   pull_request:
-    types:
-      - opened
-    # branches:
-    #   - 'develop'
+    types: [opened, reopened]
 
 jobs:
   Build_application:
+    if: ${{ github.head_ref == '**/alpha/**' || '**/beta/**' || '**/prerelease/**' }}
     runs-on: ubuntu-latest
     
     env:

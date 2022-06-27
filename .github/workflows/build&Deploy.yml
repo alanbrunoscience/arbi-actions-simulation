@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, reopened]
     branches:    
-      - 'feat/**'
+      - 'feat/alpha/workflow'
 
 jobs:
   Build_application:

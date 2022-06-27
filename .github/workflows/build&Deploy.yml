@@ -2,10 +2,10 @@ name: Build and Deploy
 
 on:
   pull_request:
-    # types:
-    #   - opened
+    types:
+      - opened
     branches:
-      - 'develop/**'
+      - 'feat/alpha'
 
 jobs:
   Build_application:

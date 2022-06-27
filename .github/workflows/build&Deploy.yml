@@ -5,10 +5,11 @@ on:
     types:
       - opened
     branches:    
-      - '**/alpha/**'
+      - 'feat/**'
 
 jobs:
   Build_application:
+    
     runs-on: ubuntu-latest
 
     env:

@@ -6,7 +6,7 @@ on:
 
 jobs:
   Build_application:
-    if: contains(github.head_ref, 'alpha')
+    if: contains(github.head_ref, '["alpha", "beta", "prerelease"]')
     runs-on: ubuntu-latest
     
     env:

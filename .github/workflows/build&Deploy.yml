@@ -1,15 +1,39 @@
 name: Build and Deploy
 
-on:
-  # push:  
+on:  
   pull_request:
-    types: [opened, reopened]
+    ## types: [opened, reopened]
+    types: 
+      - opened
+    branches:
+      - 'feat/**'
 
 jobs:
   Build_application:
     runs-on: ubuntu-latest
+
+    env:
+      NAME_BRANCH: ${{ github.head_ref }}
+ 
     steps:
-      - name: echo a string
+    
+      - name: Print name branch
+        run: "echo NAME_BRANCH: ${NAME_BRANCH}"
+
+      - name: Find specific branch patterns
         run: |
-          echo "github.head_ref: ${{ github.head_ref }}"
-          echo "NAME_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
+          import re
+          import os
+          github_head_ref = "${{ env.NAME_BRANCH }}"
+          name_branch = github_head_ref.lower()
+          x = re.findall("alpha|beta|prerelease", name_branch)
+          env_file = os.getenv('GITHUB_ENV')
+          with open(env_file, "a") as myfile:
+            myfile.write("PRERELEASE=" + x[0])
+          prerelease = (x[0])
+          print(prerelease)
+          if x:
+            print("Yes, there is at least one match!")
+          else:
+            print("No match")
+        shell: python

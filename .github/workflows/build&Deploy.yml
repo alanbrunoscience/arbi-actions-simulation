@@ -5,10 +5,14 @@ on:
   #   types: [opened, reopened]
   pull_request:
     types: [opened, reopened]
+    # branches:
+    #   - '**/alpha/**'
+    #   - '**/beta/**'
+    #   - '**/prerelease/**'
 
 jobs:
   Build_application:
-    if: github.head_ref == '**/alpha/**' || '**/beta/**' || '**/prerelease/**'
+    if: contains(github.head_ref, 'alpha')
     runs-on: ubuntu-latest
     
     env:

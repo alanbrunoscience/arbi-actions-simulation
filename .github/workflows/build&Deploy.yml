@@ -10,7 +10,7 @@ on:
 
 jobs:
   Build_application:
-    # if: ${{ github.head_ref == "**/alpha/**" }}
+    ## if: ${{ github.head_ref == "**/alpha/**" }}
     if: contains(${{ github.head_ref }}, ['alpha', 'beta', 'prerelease'])
     runs-on: ubuntu-latest
 

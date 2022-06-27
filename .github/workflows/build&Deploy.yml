@@ -5,8 +5,8 @@ on:
     types:
       - opened
       - reopened
-    # branches:    
-    #   - 'develop'
+    branches:    
+      - 'develop'
 
 jobs:
   Build_application:

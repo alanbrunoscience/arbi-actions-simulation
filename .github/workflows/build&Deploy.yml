@@ -9,7 +9,6 @@ on:
 
 jobs:
   Build_application:
-    # if: ${{ github.head_ref == 'releases/**' }}
     runs-on: ubuntu-latest
 
     env:

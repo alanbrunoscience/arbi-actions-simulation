@@ -1,17 +1,16 @@
 name: Build and Deploy
 
 on:
-  pull_request_target:
-    ## types: [opened, reopened]
+  pull_request:
     types:
       - opened
-    branches:    
-      - 'develop/**'
+    # branches:
+    #   - 'develop'
 
 jobs:
   Build_application:
     runs-on: ubuntu-latest
-
+    
     env:
       NAME_BRANCH: ${{ github.head_ref }}
  

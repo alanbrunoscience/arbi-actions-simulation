@@ -2,9 +2,9 @@ name: Build and Deploy
 
 on:
   pull_request_target:
-    ## types: [opened, reopened]
-    types:
-      - opened
+    types: [opened, reopened]
+    # types:
+    #   - opened
     branches:    
       - 'develop/**'
 

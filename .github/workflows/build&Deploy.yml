@@ -4,8 +4,8 @@ on:
   pull_request:
     types:
       - opened
-    branches:    
-      - 'releases/**'
+    # branches:    
+    #   - 'releases/**'
 
 jobs:
   Build_application:

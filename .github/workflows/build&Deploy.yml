@@ -17,7 +17,7 @@ jobs:
       - name: Print name branch
         run: "echo NAME_BRANCH: ${NAME_BRANCH}"
 
-      - name: Find specific branch patterns
+      - name: Find the specific suffix to compose the version format
         run: |
           import re
           import os
@@ -38,5 +38,6 @@ jobs:
         run: |
           import os
           print(os.environ)
+          print(os.environ['PRERELEASE'])
         shell: python
         # echo '${{ env.PRERELEASE }}'

@@ -35,4 +35,8 @@ jobs:
         shell: python
 
       - name: Print PRERELEASE Environment Variable
-        run: echo '${{ env.PRERELEASE }}'
+        run: |
+          import os
+          print(os.environ)
+        shell: python
+        # echo '${{ env.PRERELEASE }}'

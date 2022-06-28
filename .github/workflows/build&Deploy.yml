@@ -28,8 +28,8 @@ jobs:
             env_file = os.getenv('GITHUB_ENV')
             with open(env_file, "a") as myfile:
               myfile.write("PRERELEASE=" + x[0])
-            print(os.environ)
             print("Yes, there is at least one match!")
+            print(os.environ)
           else:
             print("No match")
         shell: python
@@ -37,6 +37,7 @@ jobs:
       - name: Print PRERELEASE Environment Variable
         run: |
           import os
+          print(os.environ)
           prerelease = os.environ['PRERELEASE']
           print(prerelease)
         shell: python

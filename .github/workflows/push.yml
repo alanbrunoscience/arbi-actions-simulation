@@ -21,10 +21,10 @@ jobs:
       - name: Print Source Branch Suffix
         id: teste-workflow
         run: |
-          echo "SOURCE_BRANCH_SUFFIX=`cat github.json | jq '.event.commits[-1].message' | jq 'split("/")' | jq --raw-output .[1]`" >> GITHUB_OUTPUT
+          echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq '.event.commits[-1].message' | jq 'split("/")' | jq --raw-output .[1])" >> GITHUB_ENV
 
       - name: Print Source Branch Suffix
         run: |
-          echo "SOURCE_BRANCH_SUFFIX: ${{ steps.teste-workflow.outputs.SOURCE_BRANCH_SUFFIX }}"
+          echo "SOURCE_BRANCH_SUFFIX: ${{ env.SOURCE_BRANCH_SUFFIX }}"
 
 

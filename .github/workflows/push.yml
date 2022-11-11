@@ -18,7 +18,10 @@ jobs:
         # echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq ['.event.commits[].message'] | jq .[1] | jq --raw-output 'match(["general-iac", "dev-iac", "pprd-iac", "sdx-iac", "prod-iac"])')" >> GITHUB_ENV
 
       - name: Print Source Branch Suffix
-        run: cat github.json | jq ['.event.commits[].message'] | jq .[1] | jq --raw-output 'match(["general-iac", "dev-iac", "pprd-iac", "sdx-iac", "prod-iac"])?'
+        run: echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq ['.event.commits[].message'] | jq .[1] | jq --raw-output 'match(["general-iac", "dev-iac", "pprd-iac", "sdx-iac", "prod-iac"])?')" >> GITHUB_ENV
+
+      - name: Print Source Branch Suffix
+        run: "echo SOURCE_BRANCH_SUFFIX: ${{ env.SOURCE_BRANCH_SUFFIX }}"
 
       # - name: Print Source Branch Suffix
       #   run: "echo SOURCE_BRANCH_SUFFIX: ${{ env.SOURCE_BRANCH_SUFFIX }}"

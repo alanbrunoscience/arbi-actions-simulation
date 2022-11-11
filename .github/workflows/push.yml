@@ -10,21 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Getting the Source Branch Suffix of the Pull Request Merged
+      - name: Getting Information About the Workflow Run to Catch the Commit Message when the Pull Request is Merged
         run: |
           echo '${{ toJSON(github) }}' > github.json
-        
-      - name: Create an Environment Variable with the Source Branch Suffix
-        run: |
-          cat github.json | jq '.event.commits[-1].message' | jq 'split("/")' | jq --raw-output .[1]
-
-      - name: Print Source Branch Suffix
-        id: teste-workflow
+  
+      - name: Create an Environment Variable from the Source Branch Suffix
         run: |
           echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq '.event.commits[-1].message' | jq 'split("/")' | jq --raw-output .[1])" >> $GITHUB_ENV
 
       - name: Print Source Branch Suffix
         run: |
           echo "SOURCE_BRANCH_SUFFIX: ${{ env.SOURCE_BRANCH_SUFFIX }}"
-
-

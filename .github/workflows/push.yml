@@ -10,5 +10,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print name branch
-        run: "echo BASE_REF: ${{ github.event.pull_request.base.ref }}"
+      - name: Print GitHub Context
+        run: echo '${{ toJSON(github) }}'

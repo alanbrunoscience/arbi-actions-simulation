@@ -13,6 +13,9 @@ jobs:
       - name: Getting the Source Branch Suffix of the Pull Request Merged
         run: |
           echo '${{ toJSON(github) }}' > github.json
+        
+      - name: Create an Environment Variable with the Source Branch Suffix
+        run: |
           echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq ['.event.commits[].message'] | jq .[1] | jq 'split("/")' | jq --raw-output .[1])" >> GITHUB_ENV
 
       - name: Print Source Branch Suffix

@@ -21,7 +21,6 @@ jobs:
       - name: Print Source Branch Suffix
         run: |
           echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq ['.event.commits[].message'] | jq .[1] | jq 'split("/")' | jq --raw-output .[1])" >> GITHUB_ENV
-        # "echo SOURCE_BRANCH_SUFFIX: ${{ env.SOURCE_BRANCH_SUFFIX }}"
 
       - name: Print Source Branch Suffix
         run: |

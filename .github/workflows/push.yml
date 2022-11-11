@@ -1,0 +1,14 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  Deploy_application:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Print name branch
+        run: "echo GITHUB_EVENT_PATH: $GITHUB_EVENT_PATH"

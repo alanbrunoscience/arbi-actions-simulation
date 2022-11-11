@@ -25,6 +25,6 @@ jobs:
 
       - name: Print Source Branch Suffix
         run: |
-          "echo SOURCE_BRANCH_SUFFIX: ${{ env.SOURCE_BRANCH_SUFFIX }}"
+          echo "SOURCE_BRANCH_SUFFIX: ${{ env.SOURCE_BRANCH_SUFFIX }}"
 
 

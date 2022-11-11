@@ -8,7 +8,7 @@ on:
 jobs:
   Deploy_application:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Print name branch
-        run: "echo GITHUB_EVENT_PATH: $GITHUB_EVENT_PATH"
+        run: "echo BASE_REF: ${{ github.event.pull_request.base.ref }}"

@@ -13,8 +13,9 @@ jobs:
       - name: Getting the Source Branch Suffix of the Pull Request Merged
         run: |
           echo '${{ toJSON(github) }}' > github.json
-          echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq ['.event.commits[].message'] | jq .[1] | jq --raw-output 'match(["general-iac", "dev-iac", "pprd-iac", "sdx-iac", "prod-iac"])')" >> GITHUB_ENV
+          cat github.json | jq ['.event.commits[].message'] | jq .[1] | jq --raw-output 'match(["general-iac", "dev-iac", "pprd-iac", "sdx-iac", "prod-iac"])'
+        # echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq ['.event.commits[].message'] | jq .[1] | jq --raw-output 'match(["general-iac", "dev-iac", "pprd-iac", "sdx-iac", "prod-iac"])')" >> GITHUB_ENV
 
-      - name: Print Source Branch Suffix
-        run: "echo SOURCE_BRANCH_SUFFIX: ${{ env.SOURCE_BRANCH_SUFFIX }}"
+      # - name: Print Source Branch Suffix
+      #   run: "echo SOURCE_BRANCH_SUFFIX: ${{ env.SOURCE_BRANCH_SUFFIX }}"
 

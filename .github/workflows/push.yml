@@ -16,12 +16,12 @@ jobs:
         
       - name: Create an Environment Variable with the Source Branch Suffix
         run: |
-          cat github.json | jq ['.event.commits[].message'] | jq .[1] | jq 'split("/")' | jq --raw-output .[1]
+          cat github.json | jq '.event.commits[-1].message' | jq 'split("/")' | jq --raw-output .[1]
 
       - name: Print Source Branch Suffix
         id: teste-workflow
         run: |
-          echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq ['.event.commits[].message'] | jq .[1] | jq 'split("/")' | jq --raw-output .[1])" >> GITHUB_OUTPUT
+          echo "SOURCE_BRANCH_SUFFIX=`cat github.json | jq '.event.commits[-1].message' | jq 'split("/")' | jq --raw-output .[1]`" >> GITHUB_OUTPUT
 
       - name: Print Source Branch Suffix
         run: |

@@ -22,7 +22,7 @@ jobs:
         id: teste-workflow
         run: |
           SOURCE_BRANCH_SUFFIX=$(cat github.json | jq '.event.commits[-1].message' | jq 'split("/")' | jq --raw-output .[1])
-          echo "SOURCE_BRANCH_SUFFIX: $SOURCE_BRANCH_SUFFIX" >> GITHUB_ENV
+          echo $SOURCE_BRANCH_SUFFIX
         shell: bash
 
       - name: Print Source Branch Suffix

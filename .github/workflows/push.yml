@@ -21,7 +21,7 @@ jobs:
       - name: Print Source Branch Suffix
         id: teste-workflow
         run: |
-          echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq '.event.commits[-1].message' | jq 'split("/")' | jq --raw-output .[1])" >> GITHUB_ENV
+          echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq '.event.commits[-1].message' | jq 'split("/")' | jq .[1])" >> GITHUB_ENV
 
       - name: Print Source Branch Suffix
         run: |

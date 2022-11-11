@@ -16,7 +16,7 @@ jobs:
   
       - name: Create an Environment Variable from the Source Branch Suffix
         run: |
-          echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq '.event.commits[-1].message' | jq 'split("/")' | jq --raw-output .[1])" >> $GITHUB_ENV
+          echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq '.event.commits[-1].message' | jq 'split("/")' | jq --raw-output .[1] | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Print Source Branch Suffix
         run: |

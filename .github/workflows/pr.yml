@@ -1,43 +1,43 @@
-name: Build and Deploy
+# name: Build and Deploy
 
-on:
-  pull_request:
-    types: [opened, reopened, synchronize]
+# on:
+#   pull_request:
+#     types: [opened, reopened, synchronize]
 
-jobs:
-  Build_application:
-    if: contains(github.head_ref, 'alpha') || contains(github.head_ref, 'beta') || contains(github.head_ref, 'prerelease')
-    runs-on: ubuntu-latest
+# jobs:
+#   Build_application:
+#     if: contains(github.head_ref, 'alpha') || contains(github.head_ref, 'beta') || contains(github.head_ref, 'prerelease')
+#     runs-on: ubuntu-latest
     
-    env:
-      NAME_BRANCH: ${{ github.head_ref }}
+#     env:
+#       NAME_BRANCH: ${{ github.head_ref }}
  
-    steps:
+#     steps:
     
-      - name: Print name branch
-        run: "echo NAME_BRANCH: ${NAME_BRANCH}"
+#       - name: Print name branch
+#         run: "echo NAME_BRANCH: ${NAME_BRANCH}"
 
-      - name: Find the specific suffix to compose the version format
-        run: |
-          import re
-          import os
-          github_head_ref = "${{ env.NAME_BRANCH }}"
-          name_branch = github_head_ref.lower()
-          x = re.findall("alpha|beta|prerelease", name_branch)
-          if x:
-            env_file = os.getenv('GITHUB_ENV')
-            with open(env_file, "a") as myfile:
-              myfile.write("PRERELEASE=" + x[0])
-            print("Yes, there is at least one match!")
-            print(os.environ)
-          else:
-            print("No match")
-        shell: python
+#       - name: Find the specific suffix to compose the version format
+#         run: |
+#           import re
+#           import os
+#           github_head_ref = "${{ env.NAME_BRANCH }}"
+#           name_branch = github_head_ref.lower()
+#           x = re.findall("alpha|beta|prerelease", name_branch)
+#           if x:
+#             env_file = os.getenv('GITHUB_ENV')
+#             with open(env_file, "a") as myfile:
+#               myfile.write("PRERELEASE=" + x[0])
+#             print("Yes, there is at least one match!")
+#             print(os.environ)
+#           else:
+#             print("No match")
+#         shell: python
 
-      - name: Print PRERELEASE Environment Variable
-        run: |
-          import os
-          print(os.environ)
-          prerelease = os.environ['PRERELEASE']
-          print(prerelease)
-        shell: python
+#       - name: Print PRERELEASE Environment Variable
+#         run: |
+#           import os
+#           print(os.environ)
+#           prerelease = os.environ['PRERELEASE']
+#           print(prerelease)
+#         shell: python

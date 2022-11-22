@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
       - name: Getting Information About the Workflow Run to Catch the Commit Message when the Pull Request is Merged
         run: |
-          echo '${{ toJSON(github) }}' > github.json
+          run: echo $JSON > github.json
+        env:
+          JSON: ${{ toJSON(github) }}
   
       - name: Create an Environment Variable from the Source Branch Suffix
         run: |
@@ -32,4 +31,5 @@ jobs:
             TESTE_1, teste-1
             TESTE_2, teste-2
             TESTE_3, teste-3
+            
             

@@ -23,7 +23,7 @@ jobs:
           echo "SOURCE_BRANCH_SUFFIX: ${{ env.SOURCE_BRANCH_SUFFIX }}"
 
       - name: Get Secrets from Key Vault Test
-        uses: alanbrunoscience/aws-secretsmanager-get-secrets@master
+        uses: alanbrunoscience/aws-secretsmanager-get-secrets@v1.0.0
         with:
           secret-ids: |
             TESTE_1, teste-1

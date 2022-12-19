@@ -41,3 +41,4 @@ jobs:
           prerelease = os.environ['PRERELEASE']
           print(prerelease)
         shell: python
+        

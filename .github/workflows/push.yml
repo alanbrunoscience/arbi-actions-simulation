@@ -10,11 +10,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Getting the Source Branch Suffix of the Pull Request Merged
-        run: |
-          echo '${{ toJSON(github) }}' > github.json
-          echo "SOURCE_BRANCH_SUFFIX=cat github.json | jq ['.event.commits[].message'] | jq .[1] | jq --raw-output 'match(["general-iac", "dev-iac", "pprd-iac", "sdx-iac", "prod-iac"])'" >> GITHUB_ENV
+      # - name: Getting Information About the Workflow Run to Catch the Commit Message when the Pull Request is Merged
+      #   run: |
+      #     run: echo $JSON > github.json
+      #   env:
+      #     JSON: ${{ toJSON(github) }}
+  
+      # - name: Create an Environment Variable from the Source Branch Suffix
+      #   run: |
+      #     echo "SOURCE_BRANCH_SUFFIX=$(cat github.json | jq '.event.commits[-1].message' | jq 'split("/")' | jq --raw-output .[1])" >> $GITHUB_ENV
 
-      - name: Print Source Branch Suffix
-        run: "echo SOURCE_BRANCH_SUFFIX: ${{ env.SOURCE_BRANCH_SUFFIX }}"
+      # - name: Print Source Branch Suffix
+      #   run: |
+      #     echo "SOURCE_BRANCH_SUFFIX: ${{ env.SOURCE_BRANCH_SUFFIX }}" ##
 
+      - name: Get Secrets from Key Vault Test
+        uses: alanbrunoscience/simulator-get-secrets@master
+        with:
+          secret-ids: |
+            TESTE_1, teste-1
+            TESTE_2, teste-2
+            TESTE_3, teste-3
+            
+            

@@ -10,7 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: List Repository Contents
+      - name: List Repository Contents 1
+        run: |
+          pwd
+          ls -lha
+      
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: List Repository Contents 1
         run: |
           pwd
           ls -lha

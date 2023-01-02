@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Getting Information About the Workflow Run to Catch the Commit Message when the Pull Request is Merged
         run: |
-          run: echo $JSON > github.json
+          echo $JSON > github.json
         env:
           JSON: ${{ toJSON(github) }}
   

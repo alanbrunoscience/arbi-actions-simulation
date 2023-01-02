@@ -10,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: List Repository Contents
+        run: |
+          pwd
+          ls -lha
+      
       - name: Getting Information About the Workflow Run to Catch the Commit Message when the Pull Request is Merged
         run: |
           echo $JSON > github.json

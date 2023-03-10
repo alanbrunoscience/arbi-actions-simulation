@@ -2,8 +2,8 @@ name: Build and Deploy
 
 on:
   pull_request:
-    types: [opened, reopened]
-
+    types: [opened, reopened, synchronize]
+    
 jobs:
   Build_application:
     if: contains(github.head_ref, 'alpha') || contains(github.head_ref, 'beta') || contains(github.head_ref, 'prerelease')
@@ -16,8 +16,8 @@ jobs:
     
       - name: Print name branch
         run: "echo NAME_BRANCH: ${NAME_BRANCH}"
-
-      - name: Find specific branch patterns
+     
+      - name: Find the specific suffix to compose the version format
         run: |
           import re
           import os
@@ -28,10 +28,16 @@ jobs:
             env_file = os.getenv('GITHUB_ENV')
             with open(env_file, "a") as myfile:
               myfile.write("PRERELEASE=" + x[0])
-            print("Yes, there is at least one match!")
+              print("Yes, there is at least one match!")
+              print(os.environ)
           else:
             print("No match")
         shell: python
 
       - name: Print PRERELEASE Environment Variable
-        run: echo '${{ env.PRERELEASE }}'
+        run: |
+          import os
+          print(os.environ)
+          prerelease = os.environ['PRERELEASE']
+          print(prerelease)
+        shell: python
